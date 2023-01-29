@@ -54,6 +54,7 @@ export const ContactForm = ({ handleSubmit }) => {
           <Input type="tel" name="phone"></Input>
           <ErrorText component="div" name="phone" />
         </Label>
+
         <Button type="submit">Add contact</Button>
       </FormContact>
     </Formik>

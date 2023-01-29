@@ -3,25 +3,36 @@ import styled from 'styled-components';
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  text-align: start;
+  align-items: center;
 `;
 
 export const Item = styled.li`
-  margin-right: 5px;
-  margin-bottom: 10px;
+  :not(:last-child) {
+    margin-bottom: 10px;
+  }
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #9baacf;
+  list-style: none;
 `;
 
 export const Button = styled.button`
-  font-weight: 700;
-  color: white;
-  text-decoration: none;
-  padding: 0.8em 1em calc(0.8em + 3px);
-  border-radius: 3px;
-  background: rgb(64, 199, 129);
-  box-shadow: 0 -3px rgb(53, 167, 110) inset;
-  transition: 0.2s;
-  margin-left: 10px;
+  padding: 4px;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem white;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #9baacf;
   &:hover {
-    background: rgb(53, 167, 110);
+    color: #6d5dfc;
+  }
+  &:active {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7;
   }
 `;

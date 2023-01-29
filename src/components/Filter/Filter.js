@@ -11,7 +11,6 @@ export const Filter = () => {
 
   return (
     <Label>
-      Find contacts by name
       <FindInput type="text" name="filter" onChange={onWrite} />
     </Label>
   );

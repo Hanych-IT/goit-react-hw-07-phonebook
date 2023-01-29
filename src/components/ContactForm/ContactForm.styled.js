@@ -2,43 +2,68 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormContact = styled(Form)`
-  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ErrorText = styled(ErrorMessage)`
+  font-weight: 400;
+  font-size: 14px;
   color: red;
 `;
 
 export const Label = styled.label`
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.15;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 16rem;
+  margin-bottom: 20px;
+  color: #9baacf;
 `;
 
 export const Input = styled(Field)`
-  display: flex;
-  border: 2px solid black;
-  margin: 10px auto;
-  padding: 10px 30px;
-  font-size: 20px;
-  &:focus-visible {
-    border-radius: 4px;
-    border: 2px solid lightblue;
+  box-sizing: border-box;
+  min-width: 300px;
+  padding-left: 20px;
+  height: 40px;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7;
+  background: none;
+  color: #6d5dfc;
+  :focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #ffffff;
   }
 `;
 
 export const Button = styled.button`
-  font-weight: 700;
-  color: white;
-  text-decoration: none;
-  padding: 0.8em 1em calc(0.8em + 3px);
-  border-radius: 3px;
-  background: rgb(64, 199, 129);
-  box-shadow: 0 -3px rgb(53, 167, 110) inset;
-  transition: 0.2s;
-  margin: 15px 0;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  border: none;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  background-color: #6d5dfc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #e4ebf5;
+  box-shadow: inset 0.2rem 0.2rem 1rem #8abdff,
+    inset -0.2rem -0.2rem 1rem #5b0eeb, 0.3rem 0.3rem 0.6rem #c8d0e7,
+    -0.2rem -0.2rem 0.5rem white;
   &:hover {
-    background: rgb(53, 167, 110);
+    color: #ffffff;
+  }
+  &:active {
+    box-shadow: inset 0.2rem 0.2rem 1rem #5b0eeb,
+      inset -0.2rem -0.2rem 1rem #8abdff;
   }
 `;

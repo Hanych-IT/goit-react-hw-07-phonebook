@@ -41,9 +41,9 @@ export default function App() {
 
   return (
     <Wrap>
-      <Section title={`Phonebook`}></Section>
+      <Section title={`Contact App`}></Section>
       <ContactForm handleSubmit={handleSubmit} />
-      <Section title={`Contacts`}>
+      <Section title={`Search by name`}>
         <Filter />
         {isLoading && <p>Loading contacts...</p>}
         {error && <p>{error}</p>}

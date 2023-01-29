@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  background-color: #00ffff;
-  width: 400px;
-  margin: 0 auto;
-  border-radius: 30px;
+  background-color: #e4ebf5;
   text-align: center;
-  border: 1px solid black;
-  padding: 10px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+  align-items: center;
+  padding: 30px;
 `;
