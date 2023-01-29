@@ -1,36 +1,54 @@
-import ContactList from 'components/ContactList/ContactList';
-import Filter from 'components/Filter/Filter';
-import ContactForm from 'components/ContactForm/ContactForm';
-import Loader from 'components/Loader/Loader';
+import { Section } from './Section/Section';
+import { Filter } from './Filter/Filter';
+import { ContactsList } from './ContactsList/ContactsList';
+import { ContactForm } from './ContactForm/ContactForm';
+import { Wrap } from './App.styled';
+//
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
+  selectisLoading,
   selectError,
-  selectIsLoading,
-} from 'redux/contacts/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { Container, Title, SubTitle, Message } from 'components/App.styled';
-import { fetchContacts } from 'redux/contacts/operations';
+  selectFilteredContacts,
+} from '../redux/selectors';
+import { fetchContacts, addContact } from '../redux/operations';
 import { useEffect } from 'react';
+//
+
 export default function App() {
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectisLoading);
   const error = useSelector(selectError);
+  const filter = useSelector(selectFilteredContacts);
+
+  const newContact = name => {
+    contacts.find(
+      contact => contact.name.toLowerCase() === name.name.toLowerCase()
+    )
+      ? alert(`${name.name} is already in contacts`)
+      : dispatch(addContact(name));
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    newContact(values);
+    resetForm();
+  };
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Container>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <SubTitle>Contacts</SubTitle>
-      {contacts.length > 0 && <Filter />}
-      {isLoading && !error && <Loader />}
-      {!isLoading && !error && contacts.length === 0 && (
-        <Message>There is not any contacts</Message>
-      )}
-      <ContactList />
-    </Container>
+    <Wrap>
+      <Section title={`Phonebook`}></Section>
+      <ContactForm handleSubmit={handleSubmit} />
+      <Section title={`Contacts`}>
+        <Filter />
+        {isLoading && <p>Loading contacts...</p>}
+        {error && <p>{error}</p>}
+        {contacts.length > 0 && <ContactsList contacts={filter} />}
+      </Section>
+    </Wrap>
   );
 }

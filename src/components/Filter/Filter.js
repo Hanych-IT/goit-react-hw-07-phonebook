@@ -1,24 +1,22 @@
-import { Container } from 'components/Filter/Filter.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/filter/filterSlice';
-import { selectFilter } from 'redux/filter/selectors';
+import { Label, FindInput } from './Filter.styled';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { filterChange } from '../../redux/filterSlice';
 
-export default function Filter() {
+export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
-  const handleOnChange = e => dispatch(setFilter(e.target.value));
+  const onWrite = e => {
+    dispatch(filterChange(e.currentTarget.value));
+  };
 
   return (
-    <Container>
-      <div>
-        <label htmlFor={filter}>Find contacts by name</label>
-        <input
-          type="text"
-          name="filter"
-          value={filter}
-          onChange={handleOnChange}
-        />
-      </div>
-    </Container>
+    <Label>
+      Find contacts by name
+      <FindInput type="text" name="filter" onChange={onWrite} />
+    </Label>
   );
-}
+};
+
+Label.propTypes = {
+  filter: PropTypes.string,
+};

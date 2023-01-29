@@ -1,32 +1,20 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Label = styled.label`
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+`;
+
+export const FindInput = styled.input`
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-
-  margin-bottom: 20px;
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 20px;
-  }
-  input {
-    width: 250px;
-
-    font-size: 12px;
-
-    border: 1px solid rgba(33, 33, 33, 0.2);
+  border: 2px solid black;
+  margin: 10px auto;
+  padding: 10px 30px;
+  font-size: 18px;
+  &:focus-visible {
     border-radius: 4px;
-    background-color: transparent;
-    padding: 5px;
-    outline: none;
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:focus {
-      border-color: #2196f3;
-    }
+    border: 2px solid lightblue;
   }
 `;
