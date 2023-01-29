@@ -8,7 +8,6 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 30px;
   align-items: center;
   padding: 30px;
 `;
