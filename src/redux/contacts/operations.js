@@ -1,43 +1,41 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from "api/contactsApi";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getAllContacts = createAsyncThunk(
-  'contacts/requestStatus',
-  async () => {
+axios.defaults.baseURL = 'https://63d2c0e81780fd6ab9cc4755.mockapi.io/contacts';
+
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+
+  async (_, thunkAPI) => {
     try {
-      const data = await fetchAllContacts();
-      return data;
-    } catch (error) {
-      return toast.error(error);
+      const response = await axios.get('/contacts');
+
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
-export const addNewContacts = createAsyncThunk(
-  'contacts/addContacts',
-  async (contact) => {
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async (contact, thunkAPI) => {
     try {
-      await fetchAddContact(contact);
-      toast.success('Contact added!');
-      const data = await fetchAllContacts();
-      return data;
-    } catch (error) {
-      return toast.error(error);
+      const response = await axios.post('/contacts', contact);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
-
-export const deleteCurrentContact = createAsyncThunk(
+export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (id) => {
+  async (contactId, thunkAPI) => {
     try {
-      await fetchDeleteContact(id);
-      toast.success('Contact deleted!');
-      const data = await fetchAllContacts();
-      return data;
-    } catch (error) {
-      return toast.error(error);
+      const response = await axios.delete(`/contacts/${contactId}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

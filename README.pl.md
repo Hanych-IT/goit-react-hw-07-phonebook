@@ -7,7 +7,7 @@ Ten projekt został stworzony przy pomocy
 zapoznania się z ustawieniami dodatkowych opcji
 [zobacz dokumentację](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Przygotowanie nowego projektu
+## Przygotowanie nowego projektи
 
 1. Upewnij się, że na komputerze zainstalowana jest wersja LTS Node.js.
    [Ściągnij i zainstaluj](https://nodejs.org/en/), jeżeli trzeba.
@@ -24,16 +24,6 @@ zapoznania się z ustawieniami dodatkowych opcji
    automatycznie przeładowywać się po zapisaniu zmian w plikach projektu.
 
 ## Deployment
-
-Aby skonfigurować wdrożenie projektu, należy wykonać kilka dodatkowych kroków
-w celu skonfigurowania repozytorium. Przejdź do zakładki `Settings` i w podsekcji
-`Actions` wybierz wybierz pozycję `General`.
-
-![GitHub actions settings](./assets/actions-config-step-1.png)
-
-Przewiń stronę w dół do ostatniej sekcji, a następnie wybierz opcje tak jak pokazano poniżej i kliknij `Save`. Bez tych ustawień zespół nie będzie miał uprawnień, aby zautomatyzować proces wdrażania.
-
-![GitHub actions settings](./assets/actions-config-step-2.png)
 
 Produkcyjna wersja projektu będzie automatycznie poddana pracy lintera, budowana
 i deployowana na GitHub Pages, w gałęzi `gh-pages` za każdym razem, gdy
